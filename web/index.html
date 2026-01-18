@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAGGIE_Webroom</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-one"></div>
+    <div class="bg-shape bg-two"></div>
+
+    <div class="app">
+      <header class="top">
+        <div class="brand">
+          <span class="brand-mark">IR</span>
+          <div>
+            <div class="brand-title">MAGGIE_Webroom</div>
+            <div class="brand-sub">Web chat gateway</div>
+          </div>
+        </div>
+        <div class="status" id="status">Disconnected</div>
+      </header>
+
+      <main class="grid">
+        <section class="panel connect">
+          <h2>Connect</h2>
+          <p class="hint">
+            Use the TCP server host/port and the AES key printed by the server.
+          </p>
+          <form id="connect-form">
+            <label>
+              Host
+              <input id="host" type="text" placeholder="127.0.0.1" value="127.0.0.1" />
+            </label>
+            <label>
+              Port
+              <input id="port" type="text" placeholder="9000" value="8888" />
+            </label>
+            <label>
+              AES Key (base64)
+              <input id="key" type="text" placeholder="Paste AES key here" />
+            </label>
+            <label>
+              Display name (optional)
+              <input id="name" type="text" placeholder="Alice" />
+            </label>
+            <button type="submit" class="primary">Connect</button>
+          </form>
+          <div class="meta">
+            <div class="meta-title">Tips</div>
+            <ul>
+              <li>Commands work too: /onlineUsers, /setName, /fileList</li>
+              <li>Encryption runs in your browser; the web gateway only forwards ciphertext</li>
+              <li>File transfer is not wired in this web UI yet</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="panel chat">
+          <div class="chat-header">
+            <div>
+              <div class="chat-title">Room Feed</div>
+              <div class="chat-sub">Live updates from the TCP room</div>
+            </div>
+            <button id="disconnect" class="ghost">Disconnect</button>
+          </div>
+          <div class="messages" id="messages"></div>
+          <form id="composer" class="composer">
+            <input
+              id="input"
+              type="text"
+              placeholder="Type a message or command..."
+              autocomplete="off"
+            />
+            <button type="submit" class="primary">Send</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
